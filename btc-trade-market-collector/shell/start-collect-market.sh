@@ -9,5 +9,5 @@ do
         clspath=$clspath:$k
 done
 echo "execute MarketCollectExecutor start..................."
-  java -Xms64m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=128m -classpath "${clspath}" com.wealth.btc.market.collect.collector.MarketCollectExecutor
+java -Xms64m -Xmx512m -XX:PermSize=64m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote.port=8999 -Djava.rmi.server.hostname=123.206.87.123 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -classpath "${clspath}" com.wealth.btc.market.collect.collector.MarketCollectExecutor
 echo "execute MarketCollectExecutor finish..................."

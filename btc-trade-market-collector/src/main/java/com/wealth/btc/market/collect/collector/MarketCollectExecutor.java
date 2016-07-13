@@ -1,6 +1,7 @@
 package com.wealth.btc.market.collect.collector;
 
 import com.wealth.btc.market.collect.collector.huobi.HuobiMakertCollector;
+import com.wealth.btc.market.collect.collector.huobi.HuobiTradeRecordCollector;
 
 /**
  * Created by Administrator on 2016/7/7.
@@ -8,8 +9,10 @@ import com.wealth.btc.market.collect.collector.huobi.HuobiMakertCollector;
 public class MarketCollectExecutor {
 
     public static void main(String[] args) {
-        HttpPullMarketCollector httpPullMarketCollector = new HuobiMakertCollector();
-        httpPullMarketCollector.start();
+        HttpPullMarketCollector huobiMakertCollector = new HuobiMakertCollector();
+        huobiMakertCollector.start();
+        HttpPullMarketCollector huobiTradeCollector = new HuobiTradeRecordCollector();
+        huobiTradeCollector.start();
         byte[] bytes = new byte[1024];
         while (true) {
             try {

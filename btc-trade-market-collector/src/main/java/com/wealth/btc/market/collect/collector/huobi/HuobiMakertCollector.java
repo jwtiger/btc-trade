@@ -14,7 +14,7 @@ public class HuobiMakertCollector extends HttpPullMarketCollector {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public HuobiMakertCollector() {
-        super("huobi-cfg.properties");
+        super("huobi-market-cfg.properties");
     }
 
 
@@ -34,7 +34,7 @@ public class HuobiMakertCollector extends HttpPullMarketCollector {
             stringBuilder.append(ticker.get("vol"));
             return stringBuilder.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         return null;
     }

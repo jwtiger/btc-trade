@@ -19,7 +19,7 @@ public abstract class PullMarketCollector implements MarketCollector {
         scheduledThreadPoolExecutor.scheduleAtFixedRate(new Runnable() {
             public void run() {
                 String msg = capture();
-                if (msg != null) {
+                if (msg != null && !"".equals(msg)) {
                     solMarket(msg);
                 }
             }

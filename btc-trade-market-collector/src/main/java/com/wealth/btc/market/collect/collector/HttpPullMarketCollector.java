@@ -52,7 +52,7 @@ public class HttpPullMarketCollector extends PullMarketCollector {
     private String propertiesRelPath;
 
 
-    private static final Logger logger = LoggerFactory.getLogger(HttpPullMarketCollector.class);
+    protected static final Logger logger = LoggerFactory.getLogger(HttpPullMarketCollector.class);
     private static int SocketTimeout = 3000;//3√Î
     private static int ConnectTimeout = 3000;//3√Î
     private static Boolean SetTimeOut = true;
@@ -72,10 +72,11 @@ public class HttpPullMarketCollector extends PullMarketCollector {
             interval = Integer.valueOf(prop.getProperty(HttpPullMarketCollector.class.getName() + ".interval").trim());
             filePath = prop.getProperty(HttpPullMarketCollector.class.getName() + ".filePath").trim();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         httpClient = getHttpClient();
         dataPersist = new RollingLogDataPersist(filePath);
+        logger.info("collect" + this.getClass().getSimpleName() + " init suceess, config is " + prop);
     }
 
     @Override
